@@ -1,7 +1,7 @@
 # ast-repo: a demo org repo for ast
 
 This repo shows how an organisation can publish its agent setup with
-[`ast`](../ai-setup-tool). It holds named **sets** of tools. A project selects one set, and
+[`ast`](https://github.com/epatel/ai-setup-tool). It holds named **sets** of tools. A project selects one set, and
 `ast` installs the tools of that set into the project and keeps them current.
 
 The content follows the patterns of https://ai.memention.net/setup: skills from
