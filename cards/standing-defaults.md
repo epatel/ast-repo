@@ -2,11 +2,11 @@
 
 ## Problem
 
-Agents (and people) reach for the shortest path that makes the current change
+Agents (and people) take the shortest path that makes the current change
 work: `pip install` into the system Python because the venv is one extra step,
 a hand-edited schema because the table only has three columns today. Both
-choices are invisible while the project is small and expensive once it is not —
-the machine's Python is polluted and unreproducible, and the database has no
+choices are invisible while the project is small and expensive once it is not.
+The machine's Python becomes polluted and unreproducible. The database has no
 way to move from the schema it has to the schema the code expects.
 
 These are not architectural decisions. They are defaults that should never need
@@ -25,7 +25,7 @@ source .venv/bin/activate
 pip install -r requirements.txt
 ```
 
-- Commit `requirements.txt` (or `pyproject.toml`); gitignore `.venv/`.
+- Commit `requirements.txt` (or `pyproject.toml`). Gitignore `.venv/`.
 - In scripts and systemd units, call the interpreter by path
   (`.venv/bin/python`) rather than relying on an activated shell.
 - If a tool must be available system-wide, that is a deliberate,
@@ -48,7 +48,7 @@ Prefer a dependency-free approach:
 - On startup, read the current version and apply every pending step in order
   inside a transaction. A fresh database starts at version 0 and runs all of
   them, so there is one code path, not two.
-- Never edit a migration that has already run anywhere; add a new one.
+- Never edit a migration that has already run anywhere. Add a new one.
 
 ```python
 MIGRATIONS = [
@@ -74,30 +74,31 @@ def migrate(conn):
             raise
 ```
 
-The explicit `BEGIN … COMMIT` is load-bearing: Python's `executescript()`
-commits any open transaction before it runs and ignores `with conn:`, so
-without it a migration that fails halfway leaves the schema partly changed and
-the version un-bumped — and every later run fails on the half-applied step.
-Here the schema change and the version bump commit together or not at all.
+The explicit `BEGIN … COMMIT` is load-bearing. Python's `executescript()`
+commits any open transaction before it runs and ignores `with conn:`. Without
+the explicit transaction, a migration that fails halfway leaves the schema
+partly changed and the version un-bumped — and every later run fails on the
+half-applied step. Here the schema change and the version bump commit together
+or not at all.
 
 Two consequences of that wrapping:
 
 - **A migration must not contain its own transaction control.** A `BEGIN`, `COMMIT` or `ROLLBACK` inside a step breaks the all-or-nothing guarantee.
-- **Some statements cannot run inside a transaction:** `VACUUM`, and `PRAGMA foreign_keys` or `PRAGMA journal_mode`, which are silently ignored there. Run those outside `migrate()`, for example once at connect time, not as a migration step.
+- **Some statements cannot run inside a transaction:** `VACUUM`, `PRAGMA foreign_keys` and `PRAGMA journal_mode`. SQLite silently ignores the two PRAGMAs inside a transaction. Run these statements outside `migrate()`, for example once at connect time, not as a migration step.
 
 The version check at the top refuses to start when the database is newer than the code, for example after rolling back a deploy. Without it, old code would silently run against a schema it does not know.
 
-Reach for a migration framework (Alembic, Flyway, Prisma Migrate) only when the
-project already carries that dependency or the schema genuinely outgrows a
+Use a migration framework (Alembic, Flyway, Prisma Migrate) only when the
+project already carries that dependency, or when the schema genuinely outgrows a
 linear list. A twenty-line runner has no install step, no version conflicts,
 and no lock-in — which is exactly what a small service wants.
 
 Why: without a migration path, the only ways to change a schema are to lose the
-data or to hand-edit production. Both are discovered at the worst moment.
+data or to hand-edit production. You discover both problems at the worst moment.
 
 ## When to apply
 
-Drop this card into a project's `cards/` directory and index it from
-`CLAUDE.md` whenever the project runs Python or persists data. It is a
-standing default, not a task — no code changes follow from adding it beyond
-bringing an existing project in line.
+When the project runs Python or persists data, copy this card into the
+project's `cards/` directory and index it from `CLAUDE.md`. It is a standing
+default, not a task. Adding it needs no code changes, except to make an
+existing project follow it.

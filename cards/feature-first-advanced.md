@@ -1,8 +1,8 @@
 # Feature-First Architecture — Advanced
 
-Extends the basic feature-first pattern (features as directories, each a pipeline of hookable named nodes). Reach for these only when the basics aren't enough: when features need to hook into *each other* as equals, or when the middleware set must change per request. If you don't need that, stay on the basic pattern.
+Extends the basic feature-first pattern (features as directories, each a pipeline of hookable named nodes). Use these only when the basics are not enough: when features need to hook into *each other* as equals, or when the middleware set must change per request. If you do not need that, stay on the basic pattern.
 
-When documenting an existing project, apply this only where the code already does it. Features must already hook into each other, or hooks must already bind at runtime, and each documented outbound or dynamic hook must be traceable to code. Never document peer hooks or runtime bindings the code does not have.
+When documenting an existing project, apply this only where the code already does it. Features must already hook into each other, or hooks must already bind at runtime. Each documented outbound or dynamic hook must be traceable to code. Never document peer hooks or runtime bindings the code does not have.
 
 ## Full Middleware Capabilities
 
@@ -17,7 +17,7 @@ At any node's hook points, any code (including other features) can:
 
 ## Dynamic (Runtime) Binding
 
-Static bindings (config-time) express the system's architecture. **Dynamic** bindings attach or detach during execution based on conditions, user context, feature flags, or business rules — letting the same architecture adapt per request, customer, or environment.
+Static bindings (config-time) express the system's architecture. **Dynamic** bindings attach or detach during execution based on conditions, user context, feature flags, or business rules. They let the same architecture adapt per request, customer, or environment.
 
 ```
 runtime
@@ -34,7 +34,7 @@ runtime
     unbind handle
 ```
 
-Document runtime-bound hooks in the feature's CLAUDE.md alongside the static ones, so an agent knows which hooks may or may not be present at a given node.
+Document runtime-bound hooks in the feature's CLAUDE.md alongside the static ones. Then an agent knows which hooks may or may not be present at a given node.
 
 ## Features As Peers — Bi-Directional Composition
 

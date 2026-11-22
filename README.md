@@ -17,7 +17,8 @@ agent-docs checker.
 | `cards/standing-defaults.md` | Card from ai.memention.net: Python venv and migration-path defaults. |
 | `cards/agent-setup.md` | Card that tells agents and people how the installed tools are managed. |
 | `cards/code-health.md` | Card from ai.memention.net: aihealth code-health feedback via hooks, MCP and a pinned venv install. |
-| `cards/cards-instructions.md` | Card from ai.memention.net: how to build a project's card index (overview, commands, index, lazy-loaded cards). |
+| `cards/cards-instructions.md` | Card from ai.memention.net: the context-card model and the rules for adding or changing a card. |
+| `cards/cards-procedure.md` | Card from ai.memention.net: Steps 0–5 for populating context cards in an existing project. |
 | `cards/hooks-over-prose.md` | Card from ai.memention.net: move checkable "always/never" rules from CLAUDE.md into `.claude/settings.json` hooks. |
 | `cards/known-stack.md` | Card from ai.memention.net: name mainstream frameworks in one line instead of carding them. Experimental. |
 | `cards/two-tier-claude-md.md` | Card from ai.memention.net: split feature `CLAUDE.md` files into a slim auto-loaded overview and an on-demand contract. |
@@ -33,7 +34,7 @@ Skills are not copied into this repo. The sets refer to them in their own repos.
 
 ```mermaid
 flowchart TD
-    default["default<br>double-check, review-agentic-setup, project-setup,<br>10 cards, checker script + command"]
+    default["default<br>double-check, review-agentic-setup, project-setup,<br>11 cards, checker script + command"]
     python["python-service<br>+ makefile-actions, state-machines, adt-types,<br>clean-modules, focused-refactor, minimal-repro"]
     docs["docs<br>+ ste-writing, backward-planning<br>− standing-defaults, code-health, known-stack,<br>feature-first-structured, feature-first-advanced cards"]
     fenix["proj-fenix<br>+ design-system<br>− minimal-repro"]

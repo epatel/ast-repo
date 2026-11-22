@@ -4,7 +4,7 @@ Organize code per feature, one directory each. Inside, a feature is a **pipeline
 
 ## When to apply
 
-**As documentation for an existing project:** only when the code already has an explicit pipeline, middleware or hook engine. That means named steps, plus a way for other code to attach before or after them: an engine with `bind`/`hook` calls, a middleware chain, a plugin system with named extension points. Point to it (file and symbol) before writing any feature contract. Plain modules, services or MVC layers are not pipelines. For those, recommend declining and let Context Cards cover the domains.
+**As documentation for an existing project:** only when the code already has an explicit pipeline, middleware or hook engine. That means named steps, plus a way for other code to attach before or after them. Examples are an engine with `bind`/`hook` calls, a middleware chain, or a plugin system with named extension points. Point to it (file and symbol) before writing any feature contract. Plain modules, services or MVC layers are not pipelines. For those, recommend declining and let Context Cards cover the domains.
 
 Every node, context key and hook in a feature's `CLAUDE.md` must exist in the code and be traceable to a file. Never invent nodes or hook points to make the code fit this pattern.
 
@@ -113,12 +113,12 @@ A feature's CLAUDE.md should contain:
 - **Public surface** — the entry-point function (e.g. `definePlaceOrder(engine)`)
 - **Owns / Does not own** — what this feature handles vs what it delegates
 
-The contract replaces formal type schemas with natural-language description: soft, co-located with the code, and enough for an agent to write a hook and verify via the engine's execution trace that it fired where expected.
+The contract replaces formal type schemas with natural-language description. It is soft and co-located with the code. It gives an agent enough to write a hook and to verify, from the engine's execution trace, that the hook fired where expected.
 
 For larger features (3+ nodes), split the contract into a slim always-loaded CLAUDE.md plus an on-demand full version (the two-tier CLAUDE.md pattern).
 
-When the project also uses a cards system, per-feature content lives only in the co-located CLAUDE.md — cards are reserved for cross-cutting documentation.
+When the project also uses a cards system, per-feature content lives only in the co-located CLAUDE.md — cards hold only cross-cutting documentation.
 
 ---
 
-The advanced version of this pattern — features as bidirectional peers, runtime-bound (dynamic) hooks, and the full middleware capability model — lives in the **feature-first-advanced** card. Start here; reach for that only when features genuinely need to hook into each other or reshape the graph per request.
+The **feature-first-advanced** card holds the advanced version of this pattern. It covers features as bidirectional peers, runtime-bound (dynamic) hooks, and the full middleware capability model. Start here. Use that card only when features genuinely need to hook into each other or reshape the graph per request.

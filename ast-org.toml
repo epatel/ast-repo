@@ -25,6 +25,7 @@ tools = [
     "org:card/agent-setup",
     "org:card/code-health",
     "org:card/cards-instructions",
+    "org:card/cards-procedure",
     "org:card/hooks-over-prose",
     "org:card/known-stack",
     "org:card/two-tier-claude-md",
