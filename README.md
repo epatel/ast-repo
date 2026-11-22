@@ -26,6 +26,8 @@ agent-docs checker.
 | `cards/feature-first-structured.md` | Card from ai.memention.net: features as directories, each a pipeline of hookable named nodes. |
 | `cards/feature-first-advanced.md` | Card from ai.memention.net: peer hooks between features and per-request middleware, on top of feature-first-structured. |
 | `scripts/check-agent-docs.py` | Checker from ai.memention.net for `CLAUDE.md` imports, the card index and the setup record. Read-only, standard library only. |
+| `prompts/setup.md` | Steps that `ast prompt setup epatel/ast-repo` adds after the tools are installed: assess the project, propose the patterns below, apply the confirmed ones, verify. |
+| `prompts/<pattern>.md` | One prompt for each ai.memention.net pattern (`known-stack`, `context-cards`, `feature-first`, `feature-first-advanced`, `two-tier`, `project-plan`, `standing-defaults`, `hooks-over-prose`, `code-health`), plus `anthropic-skills` and `install-tools`. A project prints one with `ast prompt <name>`. Each includes its pattern text from `cards/`. |
 | `commands/check-agent-docs.md` | Slash command `/check-agent-docs` that runs the script and explains the findings. |
 
 Skills are not copied into this repo. The sets refer to them in their own repos.
@@ -47,10 +49,11 @@ A set is everything its `extends` parents give, plus its own `tools`, minus its 
 
 | Set | Tools | For |
 | --- | --- | --- |
-| `default` | 7 | Baseline for every project |
-| `python-service` | 13 | Python services and command-line tools |
-| `docs` | 8 | Documentation and writing projects |
-| `proj-fenix` | 13 | One project that needs its own mix |
+| `default` | 16 | Baseline for every project |
+| `python-service` | 22 | Python services and command-line tools |
+| `docs` | 13 | Documentation and writing projects |
+| `proj-fenix` | 22 | One project that needs its own mix |
+| `memention-setup` | 4 | Only what ai.memention.net/setup copies into a project: the review skill, the standing-defaults card, the checker script and command. Extends nothing. |
 
 ## Use it in a project
 

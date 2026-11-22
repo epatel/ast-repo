@@ -72,3 +72,12 @@ tools = [
 exclude = [
     "agent-skills:skill/minimal-repro",
 ]
+
+[sets.memention-setup]
+description = "The tools that ai.memention.net/setup copies into a project"
+tools = [
+    "agent-skills:skill/review-agentic-setup",
+    "org:card/standing-defaults",
+    "org:script/check-agent-docs.py",
+    "org:command/check-agent-docs",
+]
