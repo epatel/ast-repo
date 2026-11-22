@@ -1,0 +1,61 @@
+# ast org repo: tool sources and named sets.
+# Projects pick a set with `ast use <this repo>` and `ast select <set>`.
+version = 1
+
+# Where tools come from. `latest-tag` follows the newest release of a repo.
+[sources.agent-skills]
+repo = "epatel/agent-skills"
+ref = "latest-tag"
+
+[sources.project-setup]
+repo = "epatel/project-setup"
+ref = "latest-tag"
+
+# The tools kept in this repo: cards/, commands/ and scripts/.
+[sources.org]
+repo = "."
+
+[sets.default]
+description = "Baseline for every project"
+tools = [
+    "agent-skills:skill/double-check",
+    "agent-skills:skill/review-agentic-setup",
+    "project-setup:skill/project-setup",
+    "org:card/standing-defaults",
+    "org:card/agent-setup",
+    "org:script/check-agent-docs.py",
+    "org:command/check-agent-docs",
+]
+
+[sets.python-service]
+description = "Python services and command-line tools"
+extends = ["default"]
+tools = [
+    "agent-skills:skill/makefile-actions",
+    "agent-skills:skill/state-machines",
+    "agent-skills:skill/adt-types",
+    "agent-skills:skill/clean-modules",
+    "agent-skills:skill/focused-refactor",
+    "agent-skills:skill/minimal-repro",
+]
+
+[sets.docs]
+description = "Documentation and writing projects"
+extends = ["default"]
+tools = [
+    "agent-skills:skill/ste-writing",
+    "agent-skills:skill/backward-planning",
+]
+exclude = [
+    "org:card/standing-defaults",
+]
+
+[sets.proj-fenix]
+description = "Project Fenix: python-service plus a design system, without minimal-repro"
+extends = ["python-service"]
+tools = [
+    "agent-skills:skill/design-system",
+]
+exclude = [
+    "agent-skills:skill/minimal-repro",
+]
