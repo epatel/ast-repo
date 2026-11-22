@@ -27,7 +27,7 @@ Skills are not copied into this repo. The sets refer to them in their own repos.
 flowchart TD
     default["default<br>double-check, review-agentic-setup, project-setup,<br>3 cards, checker script + command"]
     python["python-service<br>+ makefile-actions, state-machines, adt-types,<br>clean-modules, focused-refactor, minimal-repro"]
-    docs["docs<br>+ ste-writing, backward-planning<br>− standing-defaults card"]
+    docs["docs<br>+ ste-writing, backward-planning<br>− standing-defaults, code-health cards"]
     fenix["proj-fenix<br>+ design-system<br>− minimal-repro"]
     default --> python
     default --> docs

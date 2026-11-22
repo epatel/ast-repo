@@ -49,6 +49,7 @@ tools = [
 ]
 exclude = [
     "org:card/standing-defaults",
+    "org:card/code-health",
 ]
 
 [sets.proj-fenix]
