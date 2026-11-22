@@ -53,6 +53,11 @@ A set is everything its `extends` parents give, plus its own `tools`, minus its 
 
 ## Use it in a project
 
+The short way, with a coding agent: run `ast prompt setup epatel/ast-repo` and tell the agent
+to follow the output. It picks the set that fits the project and reports what it installed.
+
+By hand:
+
 ```sh
 cd my-project
 ast init
