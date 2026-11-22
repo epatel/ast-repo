@@ -16,6 +16,13 @@ agent-docs checker.
 | `cards/standing-defaults.md` | Card from ai.memention.net: Python venv and migration-path defaults. |
 | `cards/agent-setup.md` | Card that tells agents and people how the installed tools are managed. |
 | `cards/code-health.md` | Card from ai.memention.net: aihealth code-health feedback via hooks, MCP and a pinned venv install. |
+| `cards/cards-instructions.md` | Card from ai.memention.net: how to build a project's card index (overview, commands, index, lazy-loaded cards). |
+| `cards/hooks-over-prose.md` | Card from ai.memention.net: move checkable "always/never" rules from CLAUDE.md into `.claude/settings.json` hooks. |
+| `cards/known-stack.md` | Card from ai.memention.net: name mainstream frameworks in one line instead of carding them. Experimental. |
+| `cards/two-tier-claude-md.md` | Card from ai.memention.net: split feature `CLAUDE.md` files into a slim auto-loaded overview and an on-demand contract. |
+| `cards/project-plan.md` | Card from ai.memention.net: a shared `project-plan.md` that keeps parallel agents on one goal and state. |
+| `cards/feature-first-structured.md` | Card from ai.memention.net: features as directories, each a pipeline of hookable named nodes. |
+| `cards/feature-first-advanced.md` | Card from ai.memention.net: peer hooks between features and per-request middleware, on top of feature-first-structured. |
 | `scripts/check-agent-docs.py` | Checker from ai.memention.net for `CLAUDE.md` imports, the card index and the setup record. Read-only, standard library only. |
 | `commands/check-agent-docs.md` | Slash command `/check-agent-docs` that runs the script and explains the findings. |
 
@@ -25,9 +32,9 @@ Skills are not copied into this repo. The sets refer to them in their own repos.
 
 ```mermaid
 flowchart TD
-    default["default<br>double-check, review-agentic-setup, project-setup,<br>3 cards, checker script + command"]
+    default["default<br>double-check, review-agentic-setup, project-setup,<br>10 cards, checker script + command"]
     python["python-service<br>+ makefile-actions, state-machines, adt-types,<br>clean-modules, focused-refactor, minimal-repro"]
-    docs["docs<br>+ ste-writing, backward-planning<br>− standing-defaults, code-health cards"]
+    docs["docs<br>+ ste-writing, backward-planning<br>− standing-defaults, code-health, known-stack,<br>feature-first-structured, feature-first-advanced cards"]
     fenix["proj-fenix<br>+ design-system<br>− minimal-repro"]
     default --> python
     default --> docs
@@ -67,6 +74,13 @@ ast add ste-writing            # add a tool the set does not have
 - [standing-defaults](cards/standing-defaults.md) — installing a Python dependency, or changing a stored schema
 - [agent-setup](cards/agent-setup.md) — adding, changing or updating a skill, command, script or card
 - [code-health](cards/code-health.md) — setting up or updating aihealth code-health feedback (hooks, MCP, pinned install)
+- [cards-instructions](cards/cards-instructions.md) — creating or reorganising the card index, or adding a card
+- [hooks-over-prose](cards/hooks-over-prose.md) — adding an "always/never/before every" rule that a script could check
+- [known-stack](cards/known-stack.md) — documenting a part of the project built on a mainstream framework or pattern
+- [two-tier-claude-md](cards/two-tier-claude-md.md) — writing or trimming a feature's `CLAUDE.md`
+- [project-plan](cards/project-plan.md) — starting, splitting or handing off work across agents or sessions
+- [feature-first-structured](cards/feature-first-structured.md) — adding or changing a feature's pipeline, nodes or hooks
+- [feature-first-advanced](cards/feature-first-advanced.md) — one feature hooking into another, or middleware that changes per request
 ```
 
 ## Change the org repo

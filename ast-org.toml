@@ -24,6 +24,13 @@ tools = [
     "org:card/standing-defaults",
     "org:card/agent-setup",
     "org:card/code-health",
+    "org:card/cards-instructions",
+    "org:card/hooks-over-prose",
+    "org:card/known-stack",
+    "org:card/two-tier-claude-md",
+    "org:card/project-plan",
+    "org:card/feature-first-structured",
+    "org:card/feature-first-advanced",
     "org:script/check-agent-docs.py",
     "org:command/check-agent-docs",
 ]
@@ -50,6 +57,9 @@ tools = [
 exclude = [
     "org:card/standing-defaults",
     "org:card/code-health",
+    "org:card/known-stack",
+    "org:card/feature-first-structured",
+    "org:card/feature-first-advanced",
 ]
 
 [sets.proj-fenix]
