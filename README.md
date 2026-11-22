@@ -44,13 +44,10 @@ A set is everything its `extends` parents give, plus its own `tools`, minus its 
 
 ## Use it in a project
 
-The repo must have at least one commit: a project reads `ast-org.toml` from git, not from
-the working tree.
-
 ```sh
 cd my-project
 ast init
-ast use ../ast-repo            # or a git URL, or owner/repo on GitHub
+ast use epatel/ast-repo        # this repo on GitHub; a git URL or a local path also works
 ast select                     # list the sets
 ast select python-service      # install that set
 ast list                       # see each tool and the set it comes from
@@ -88,3 +85,6 @@ To add a tool of your own, put it in `cards/`, `commands/`, `scripts/`, `agents/
 
 Commit and push. Each project gets the change when it runs `ast update`; before that,
 `ast status` in the project shows what the update will install, change and remove.
+
+A project reads `ast-org.toml` from git, not from your working tree, so a change that is
+not committed and pushed does not reach any project.
