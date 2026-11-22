@@ -13,6 +13,7 @@ agent-docs checker.
 | Path | What it is |
 | --- | --- |
 | `ast-org.toml` | The sources and the sets. This is the file that `ast` reads. |
+| `CARDS.md` | One line per card that says when to read it. `ast` copies these lines into a project's card index. |
 | `cards/standing-defaults.md` | Card from ai.memention.net: Python venv and migration-path defaults. |
 | `cards/agent-setup.md` | Card that tells agents and people how the installed tools are managed. |
 | `cards/code-health.md` | Card from ai.memention.net: aihealth code-health feedback via hooks, MCP and a pinned venv install. |
@@ -68,20 +69,9 @@ ast disable minimal-repro      # turn one tool of the set off
 ast add ste-writing            # add a tool the set does not have
 ```
 
-`ast` copies cards into `cards/` but does not edit `CLAUDE.md`. Add the index lines yourself:
-
-```markdown
-- [standing-defaults](cards/standing-defaults.md) — installing a Python dependency, or changing a stored schema
-- [agent-setup](cards/agent-setup.md) — adding, changing or updating a skill, command, script or card
-- [code-health](cards/code-health.md) — setting up or updating aihealth code-health feedback (hooks, MCP, pinned install)
-- [cards-instructions](cards/cards-instructions.md) — creating or reorganising the card index, or adding a card
-- [hooks-over-prose](cards/hooks-over-prose.md) — adding an "always/never/before every" rule that a script could check
-- [known-stack](cards/known-stack.md) — documenting a part of the project built on a mainstream framework or pattern
-- [two-tier-claude-md](cards/two-tier-claude-md.md) — writing or trimming a feature's `CLAUDE.md`
-- [project-plan](cards/project-plan.md) — starting, splitting or handing off work across agents or sessions
-- [feature-first-structured](cards/feature-first-structured.md) — adding or changing a feature's pipeline, nodes or hooks
-- [feature-first-advanced](cards/feature-first-advanced.md) — one feature hooking into another, or middleware that changes per request
-```
+`ast` also lists the installed cards in the project's `CARDS.md` and adds `@CARDS.md` to
+`CLAUDE.md`, so agents know when to read each card. The text of each line comes from
+[`CARDS.md`](CARDS.md) in this repo.
 
 ## Change the org repo
 

@@ -38,8 +38,10 @@ merge it. An update can change the instructions that every agent in this project
 To change a tool for this project only, turn it off with `ast disable <tool>` and keep your
 own version under a different name.
 
-## Cards need an index line
+## The card index
 
-`ast` copies a card into `cards/`. It does not edit `CLAUDE.md`. After a card is added, add
-its index line to `CLAUDE.md` with the situation that makes the card relevant, and remove
-the line when the card is removed.
+`ast` lists the installed cards in `CARDS.md`, between the two `ast:cards` marker comments,
+and `CLAUDE.md` imports that file with `@CARDS.md`. Do not edit between the markers: `ast`
+rewrites that part on every sync. To index a card of your own, add its line outside the
+markers. To change the text of an installed card's line, change it in the `CARDS.md` of
+the repo the card comes from.
