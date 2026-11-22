@@ -15,6 +15,7 @@ agent-docs checker.
 | `ast-org.toml` | The sources and the sets. This is the file that `ast` reads. |
 | `cards/standing-defaults.md` | Card from ai.memention.net: Python venv and migration-path defaults. |
 | `cards/agent-setup.md` | Card that tells agents and people how the installed tools are managed. |
+| `cards/code-health.md` | Card from ai.memention.net: aihealth code-health feedback via hooks, MCP and a pinned venv install. |
 | `scripts/check-agent-docs.py` | Checker from ai.memention.net for `CLAUDE.md` imports, the card index and the setup record. Read-only, standard library only. |
 | `commands/check-agent-docs.md` | Slash command `/check-agent-docs` that runs the script and explains the findings. |
 
@@ -24,7 +25,7 @@ Skills are not copied into this repo. The sets refer to them in their own repos.
 
 ```mermaid
 flowchart TD
-    default["default<br>double-check, review-agentic-setup, project-setup,<br>2 cards, checker script + command"]
+    default["default<br>double-check, review-agentic-setup, project-setup,<br>3 cards, checker script + command"]
     python["python-service<br>+ makefile-actions, state-machines, adt-types,<br>clean-modules, focused-refactor, minimal-repro"]
     docs["docs<br>+ ste-writing, backward-planning<br>− standing-defaults card"]
     fenix["proj-fenix<br>+ design-system<br>− minimal-repro"]
@@ -65,6 +66,7 @@ ast add ste-writing            # add a tool the set does not have
 ```markdown
 - [standing-defaults](cards/standing-defaults.md) — installing a Python dependency, or changing a stored schema
 - [agent-setup](cards/agent-setup.md) — adding, changing or updating a skill, command, script or card
+- [code-health](cards/code-health.md) — setting up or updating aihealth code-health feedback (hooks, MCP, pinned install)
 ```
 
 ## Change the org repo

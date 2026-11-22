@@ -23,6 +23,7 @@ tools = [
     "project-setup:skill/project-setup",
     "org:card/standing-defaults",
     "org:card/agent-setup",
+    "org:card/code-health",
     "org:script/check-agent-docs.py",
     "org:command/check-agent-docs",
 ]
